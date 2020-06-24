@@ -1,7 +1,7 @@
 Chromedriver session is started using 'chromedriver -p <port_number>'
 
 ### Start a Chrome session - 
-	- REST Request 
+	_REST Request_ 
 		Method -Post
 		URL - http://127.0.0.1:<port_number>/session
 		Body -  
@@ -13,8 +13,9 @@ Chromedriver session is started using 'chromedriver -p <port_number>'
 							"platform": "ANY"
 						}
 					}
-				}
-	- CURL Request
+				}	
+
+	_CURL Request_
 		curl --location --request POST 'http://127.0.0.1:9515/session' \
 		--header 'Content-Type: application/json' \
 		--data-raw '{
