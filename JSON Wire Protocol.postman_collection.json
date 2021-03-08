@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "600e079d-6099-4514-8589-9ccd59bccc4a",
+		"name": "JSON Wire Protocol",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Chrome Session start",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.unset(\"sessionId\")\r",
+							"postman.setEnvironmentVariable(\"sessionId\",jsonData.sessionId);\r",
+							"//pm.environment.set(\"sessionId\") = jsonData.sessionId;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"desiredCapabilities\": {\r\n        \"browserName\": \"chrome\",\r\n        \"version\": \"\",\r\n        \"platform\": \"ANY\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{driverendpoint}}/session",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Server status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{driverendpoint}}/status",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetActiveSessions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{driverendpoint}}/sessions",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWindowsHandles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{driverendpoint}}/session/{{sessionId}}/window_handles",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"session",
+						"{{sessionId}}",
+						"window_handles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NavigateTo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"http://www.google.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{driverendpoint}}/session/{{sessionId}}/url",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"session",
+						"{{sessionId}}",
+						"url"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCurrentURL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{driverendpoint}}/session/{{sessionId}}/url",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"session",
+						"{{sessionId}}",
+						"url"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteSession",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{driverendpoint}}/session/{{sessionId}}",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"session",
+						"{{sessionId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TakeScreenShot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{driverendpoint}}/session/{{sessionId}}/screenshot",
+					"host": [
+						"{{driverendpoint}}"
+					],
+					"path": [
+						"session",
+						"{{sessionId}}",
+						"screenshot"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
